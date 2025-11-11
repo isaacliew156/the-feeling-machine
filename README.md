@@ -357,10 +357,6 @@ black . --line-length 100
 isort . --profile black
 ```
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 🙏 Acknowledgments
 
 - **Google Research** for the GoEmotions dataset
