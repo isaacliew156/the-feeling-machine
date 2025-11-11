@@ -1,0 +1,52 @@
+{
+  "EMOTION_COLUMNS": [
+    "admiration",
+    "amusement",
+    "anger",
+    "annoyance",
+    "approval",
+    "caring",
+    "confusion",
+    "curiosity",
+    "desire",
+    "disappointment",
+    "disapproval",
+    "disgust",
+    "embarrassment",
+    "excitement",
+    "fear",
+    "gratitude",
+    "grief",
+    "joy",
+    "love",
+    "nervousness",
+    "optimism",
+    "pride",
+    "realization",
+    "relief",
+    "remorse",
+    "sadness",
+    "surprise",
+    "neutral"
+  ],
+  "MAX_SEQUENCE_LENGTH": 50,
+  "MAX_VOCAB_SIZE": 20000,
+  "EMBEDDING_DIM": 300,
+  "CNN_FILTERS": [
+    128,
+    128,
+    128
+  ],
+  "CNN_KERNEL_SIZES": [
+    2,
+    3,
+    4
+  ],
+  "HIDDEN_DIM": 256,
+  "DROPOUT_RATE": 0.5,
+  "SPATIAL_DROPOUT": 0.3,
+  "BATCH_SIZE": 64,
+  "LEARNING_RATE": 0.001,
+  "EPOCHS": 30,
+  "BEST_THRESHOLD": 0.15000000000000002
+}

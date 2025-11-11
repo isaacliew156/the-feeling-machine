@@ -1,0 +1,161 @@
+{
+  "model_type": "CNN with GloVe Embeddings",
+  "test_performance": {
+    "f1_macro": 0.30988175585791017,
+    "f1_micro": 0.4075025898477967,
+    "precision": 0.2883497589557567,
+    "recall": 0.39252901372496124,
+    "best_threshold": 0.15000000000000002
+  },
+  "comparison": {
+    "traditional_ml": 0.3084,
+    "word_embedding": 0.30988175585791017,
+    "improvement": 0.4804655829799484
+  },
+  "per_emotion_performance": [
+    {
+      "Emotion": "gratitude",
+      "F1_Score": 0.7690239311642915,
+      "Support": 1728
+    },
+    {
+      "Emotion": "amusement",
+      "F1_Score": 0.6119977985690699,
+      "Support": 1433
+    },
+    {
+      "Emotion": "love",
+      "F1_Score": 0.611764705882353,
+      "Support": 1242
+    },
+    {
+      "Emotion": "remorse",
+      "F1_Score": 0.5183585313174947,
+      "Support": 379
+    },
+    {
+      "Emotion": "admiration",
+      "F1_Score": 0.5159365251593653,
+      "Support": 2605
+    },
+    {
+      "Emotion": "neutral",
+      "F1_Score": 0.4983011710374402,
+      "Support": 8295
+    },
+    {
+      "Emotion": "fear",
+      "F1_Score": 0.42046362909672264,
+      "Support": 453
+    },
+    {
+      "Emotion": "surprise",
+      "F1_Score": 0.3812741312741313,
+      "Support": 824
+    },
+    {
+      "Emotion": "joy",
+      "F1_Score": 0.3775127768313458,
+      "Support": 1232
+    },
+    {
+      "Emotion": "sadness",
+      "F1_Score": 0.36774679728711385,
+      "Support": 987
+    },
+    {
+      "Emotion": "optimism",
+      "F1_Score": 0.36675126903553296,
+      "Support": 1319
+    },
+    {
+      "Emotion": "anger",
+      "F1_Score": 0.33824206166589965,
+      "Support": 1271
+    },
+    {
+      "Emotion": "curiosity",
+      "F1_Score": 0.33666001330671985,
+      "Support": 1447
+    },
+    {
+      "Emotion": "desire",
+      "F1_Score": 0.2832319721980886,
+      "Support": 537
+    },
+    {
+      "Emotion": "annoyance",
+      "F1_Score": 0.2799176712731549,
+      "Support": 2044
+    },
+    {
+      "Emotion": "confusion",
+      "F1_Score": 0.26850937808489633,
+      "Support": 1119
+    },
+    {
+      "Emotion": "disgust",
+      "F1_Score": 0.2638731596828992,
+      "Support": 808
+    },
+    {
+      "Emotion": "excitement",
+      "F1_Score": 0.2589138782227098,
+      "Support": 862
+    },
+    {
+      "Emotion": "disapproval",
+      "F1_Score": 0.22788203753351205,
+      "Support": 1681
+    },
+    {
+      "Emotion": "caring",
+      "F1_Score": 0.2220873786407767,
+      "Support": 962
+    },
+    {
+      "Emotion": "approval",
+      "F1_Score": 0.20770405565925673,
+      "Support": 2654
+    },
+    {
+      "Emotion": "embarrassment",
+      "F1_Score": 0.19999999999999998,
+      "Support": 361
+    },
+    {
+      "Emotion": "disappointment",
+      "F1_Score": 0.18986802894848873,
+      "Support": 1233
+    },
+    {
+      "Emotion": "nervousness",
+      "F1_Score": 0.15625,
+      "Support": 274
+    },
+    {
+      "Emotion": "realization",
+      "F1_Score": 0.004418262150220913,
+      "Support": 1347
+    },
+    {
+      "Emotion": "grief",
+      "F1_Score": 0.0,
+      "Support": 88
+    },
+    {
+      "Emotion": "pride",
+      "F1_Score": 0.0,
+      "Support": 207
+    },
+    {
+      "Emotion": "relief",
+      "F1_Score": 0.0,
+      "Support": 195
+    }
+  ],
+  "training_epochs": 14,
+  "vocab_size": 20000,
+  "embedding_dim": 300,
+  "max_sequence_length": 50
+}

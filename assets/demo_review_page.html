@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudAI Pro - Customer Reviews | TechCorp</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .company-logo {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-section {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            padding: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" opacity="0.3"><path d="M9 19c-5 0-8-3-8-8s3-8 8-8 8 3 8 8-3 8-8 8z"/><path d="M15 9l6 6m-6-6v6m0-6h6"/></svg>') center/80px no-repeat;
+        }
+
+        .product-info h1 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        .product-info .tagline {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .rating-summary {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .overall-rating {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        .stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .star {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+
+        .star.empty {
+            color: #ddd;
+        }
+
+        .review-count {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+        }
+
+        .reviews-section {
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #1e3c72;
+        }
+
+        .review-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .reviewer-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .review-date {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .review-rating {
+            display: flex;
+            gap: 2px;
+        }
+
+        .review-text {
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .review-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .helpful-btn {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #666;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .helpful-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .verified-badge {
+            background: #48bb78;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .add-review-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem;
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #1e3c72;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .star-input {
+            font-size: 1.5rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .star-input.active,
+        .star-input:hover {
+            color: #ffd700;
+        }
+
+        .export-info {
+            background: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 2rem;
+        }
+
+        .export-info h3 {
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+        }
+
+        .format-preview {
+            background: #f1f3f4;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .product-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            .review-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #48bb78;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: none;
+            z-index: 1000;
+        }
+
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="company-logo">TechCorp Solutions</div>
+            <h1>Customer Reviews & Feedback Portal</h1>
+        </div>
+
+        <div class="product-section">
+            <div class="product-image">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="product-info">
+                <h1>CloudAI Pro</h1>
+                <p class="tagline">Advanced AI-powered productivity suite designed to streamline workflows, automate repetitive tasks, and boost team collaboration with intelligent insights and real-time analytics.</p>
+                <div class="rating-summary">
+                    <div class="overall-rating" id="overall-rating">4.2</div>
+                    <div class="stars" id="overall-stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star empty">★</span>
+                    </div>
+                    <div class="review-count" id="review-count">(24 reviews)</div>
+                </div>
+                <p><strong>Price:</strong> $49.99/month | <strong>Category:</strong> AI & Productivity</p>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-primary" onclick="toggleAddReview()">
+                <i class="fas fa-plus"></i>
+                Add Review
+            </button>
+            <button class="btn btn-success" onclick="exportToCSV()">
+                <i class="fas fa-download"></i>
+                Export Reviews (CSV)
+            </button>
+        </div>
+
+        <div class="add-review-form" id="add-review-form">
+            <h3>Share Your Experience</h3>
+            <form onsubmit="submitReview(event)">
+                <div class="form-group">
+                    <label class="form-label">Your Rating</label>
+                    <div class="star-rating" id="new-rating">
+                        <span class="star-input" data-rating="1">★</span>
+                        <span class="star-input" data-rating="2">★</span>
+                        <span class="star-input" data-rating="3">★</span>
+                        <span class="star-input" data-rating="4">★</span>
+                        <span class="star-input" data-rating="5">★</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Your Name</label>
+                    <input type="text" class="form-control" id="reviewer-name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Your Review</label>
+                    <textarea class="form-control" id="review-text" rows="4" placeholder="Share your experience with CloudAI Pro..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    Submit Review
+                </button>
+            </form>
+        </div>
+
+        <div class="reviews-section">
+            <h2 class="section-title">Customer Reviews</h2>
+            <div id="reviews-container">
+                <!-- Reviews will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="export-info">
+            <h3><i class="fas fa-info-circle"></i> Export Information</h3>
+            <p>Export all reviews as CSV for batch emotion analysis. Perfect for business intelligence and sentiment tracking.</p>
+            <div class="format-preview">
+text<br>
+"This AI tool has completely transformed our workflow..."<br>
+"Great features but the learning curve is steep..."<br>
+"Excellent customer support and intuitive interface..."
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 TechCorp Solutions. This is a demo page for emotion analysis demonstration.</p>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // Sample reviews data
+        let reviews = [
+            {
+                id: 1,
+                name: "Sarah Johnson",
+                rating: 5,
+                date: "2024-01-15",
+                text: "This AI tool has completely transformed our workflow! The automation features are incredible and have saved our team countless hours. The interface is intuitive and the AI suggestions are spot-on.",
+                verified: true,
+                helpful: 12
+            },
+            {
+                id: 2,
+                name: "Mike Chen",
+                rating: 4,
+                date: "2024-01-12",
+                text: "Great product overall! The AI capabilities are impressive and it integrates well with our existing tools. Only minor issue is the occasional lag during peak hours.",
+                verified: true,
+                helpful: 8
+            },
+            {
+                id: 3,
+                name: "Emily Rodriguez",
+                rating: 2,
+                date: "2024-01-10",
+                text: "I'm disappointed with the service quality. The product has potential but the customer support was unhelpful when I encountered issues. Still waiting for a proper response to my tickets.",
+                verified: false,
+                helpful: 3
+            },
+            {
+                id: 4,
+                name: "David Thompson",
+                rating: 5,
+                date: "2024-01-08",
+                text: "Absolutely love this product! The AI recommendations have improved our productivity by 40%. The dashboard is clean and the analytics are exactly what we needed.",
+                verified: true,
+                helpful: 15
+            },
+            {
+                id: 5,
+                name: "Lisa Wang",
+                rating: 3,
+                date: "2024-01-05",
+                text: "Decent features but the price point is a bit high for small businesses like ours. The AI works well but we expected more customization options for this cost.",
+                verified: true,
+                helpful: 5
+            },
+            {
+                id: 6,
+                name: "Robert Kim",
+                rating: 4,
+                date: "2024-01-03",
+                text: "Really impressed with the smart automation! It's like having an AI assistant that actually understands our business needs. Setup was easier than expected.",
+                verified: true,
+                helpful: 9
+            },
+            {
+                id: 7,
+                name: "Amanda Foster",
+                rating: 1,
+                date: "2024-01-01",
+                text: "This makes me so angry! The software crashed multiple times during our important presentation. We lost valuable client data and the recovery tools didn't work properly.",
+                verified: false,
+                helpful: 1
+            },
+            {
+                id: 8,
+                name: "James Wilson",
+                rating: 5,
+                date: "2023-12-28",
+                text: "Fantastic experience from start to finish! The AI insights have revolutionized how we approach our projects. Customer service is top-notch and very responsive.",
+                verified: true,
+                helpful: 11
+            },
+            {
+                id: 9,
+                name: "Maria Garcia",
+                rating: 3,
+                date: "2023-12-25",
+                text: "The features are good and it works as advertised. However, I feel nervous about relying too heavily on AI for critical business decisions. More transparency would be appreciated.",
+                verified: true,
+                helpful: 6
+            },
+            {
+                id: 10,
+                name: "Kevin Park",
+                rating: 4,
+                date: "2023-12-22",
+                text: "What a wonderful surprise! This tool exceeded our expectations. The learning algorithms adapt quickly to our patterns and the collaboration features are brilliant.",
+                verified: true,
+                helpful: 13
+            },
+            {
+                id: 11,
+                name: "Jennifer Lee",
+                rating: 2,
+                date: "2023-12-20",
+                text: "Really frustrating experience with the recent updates. Features that worked fine before are now buggy. The AI sometimes gives contradictory suggestions.",
+                verified: true,
+                helpful: 4
+            },
+            {
+                id: 12,
+                name: "Thomas Brown",
+                rating: 5,
+                date: "2023-12-18",
+                text: "I'm so excited about the new features they keep adding! The AI gets smarter every month and the integration possibilities are endless. Great value for money.",
+                verified: true,
+                helpful: 10
+            },
+            {
+                id: 13,
+                name: "Rachel Adams",
+                rating: 3,
+                date: "2023-12-15",
+                text: "The interface is clean and modern, which I appreciate. The AI works fine for basic tasks but struggles with more complex workflows. It's okay for the price.",
+                verified: false,
+                helpful: 2
+            },
+            {
+                id: 14,
+                name: "Daniel Martinez",
+                rating: 4,
+                date: "2023-12-12",
+                text: "Solid product with reliable performance. The AI recommendations have helped optimize our processes significantly. Would recommend for medium to large teams.",
+                verified: true,
+                helpful: 7
+            },
+            {
+                id: 15,
+                name: "Sophie Turner",
+                rating: 1,
+                date: "2023-12-10",
+                text: "I'm feeling quite anxious about the data security aspects. The privacy policy is unclear and I'm not comfortable with how much access the AI has to our sensitive information.",
+                verified: false,
+                helpful: 0
+            }
+        ];
+
+        let currentRating = 0;
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderReviews();
+            updateOverallRating();
+            setupStarRating();
+        });
+
+        function renderReviews() {
+            const container = document.getElementById('reviews-container');
+            container.innerHTML = reviews.map(review => `
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">${review.name.charAt(0)}</div>
+                            <div>
+                                <div class="reviewer-name">${review.name}</div>
+                                <div class="review-date">${formatDate(review.date)}</div>
+                            </div>
+                            ${review.verified ? '<div class="verified-badge">✓ Verified Purchase</div>' : ''}
+                        </div>
+                        <div class="review-rating">
+                            ${generateStars(review.rating)}
+                        </div>
+                    </div>
+                    <div class="review-text">${review.text}</div>
+                    <div class="review-actions">
+                        <button class="helpful-btn">👍 Helpful (${review.helpful})</button>
+                        <button class="helpful-btn">👎 Not helpful</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function generateStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                stars += `<span class="star ${i <= rating ? '' : 'empty'}">★</span>`;
+            }
+            return stars;
+        }
+
+        function formatDate(dateString) {
+            return new Date(dateString).toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+
+        function updateOverallRating() {
+            const average = reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
+            document.getElementById('overall-rating').textContent = average.toFixed(1);
+            document.getElementById('review-count').textContent = `(${reviews.length} reviews)`;
+            
+            const starsContainer = document.getElementById('overall-stars');
+            const fullStars = Math.floor(average);
+            const hasHalfStar = average % 1 >= 0.5;
+            
+            starsContainer.innerHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                const star = document.createElement('span');
+                star.className = 'star';
+                if (i <= fullStars) {
+                    star.textContent = '★';
+                } else if (i === fullStars + 1 && hasHalfStar) {
+                    star.textContent = '★';
+                    star.style.background = 'linear-gradient(90deg, #ffd700 50%, #ddd 50%)';
+                    star.style.backgroundClip = 'text';
+                    star.style.webkitBackgroundClip = 'text';
+                    star.style.webkitTextFillColor = 'transparent';
+                } else {
+                    star.textContent = '★';
+                    star.className = 'star empty';
+                }
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function setupStarRating() {
+            const stars = document.querySelectorAll('#new-rating .star-input');
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    currentRating = parseInt(this.dataset.rating);
+                    updateStarDisplay();
+                });
+                
+                star.addEventListener('mouseover', function() {
+                    const hoverRating = parseInt(this.dataset.rating);
+                    highlightStars(hoverRating);
+                });
+            });
+            
+            document.getElementById('new-rating').addEventListener('mouseleave', function() {
+                updateStarDisplay();
+            });
+        }
+
+        function highlightStars(rating) {
+            const stars = document.querySelectorAll('#new-rating .star-input');
+            stars.forEach((star, index) => {
+                star.classList.toggle('active', index < rating);
+            });
+        }
+
+        function updateStarDisplay() {
+            highlightStars(currentRating);
+        }
+
+        function toggleAddReview() {
+            const form = document.getElementById('add-review-form');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function submitReview(event) {
+            event.preventDefault();
+            
+            if (currentRating === 0) {
+                alert('Please select a rating');
+                return;
+            }
+            
+            const name = document.getElementById('reviewer-name').value;
+            const text = document.getElementById('review-text').value;
+            
+            const newReview = {
+                id: reviews.length + 1,
+                name: name,
+                rating: currentRating,
+                date: new Date().toISOString().split('T')[0],
+                text: text,
+                verified: false,
+                helpful: 0
+            };
+            
+            reviews.unshift(newReview); // Add to beginning
+            renderReviews();
+            updateOverallRating();
+            
+            // Reset form
+            document.getElementById('reviewer-name').value = '';
+            document.getElementById('review-text').value = '';
+            currentRating = 0;
+            updateStarDisplay();
+            toggleAddReview();
+            
+            showNotification('Review submitted successfully!');
+        }
+
+        function exportToCSV() {
+            const csvContent = 'text\n' + reviews.map(review => `"${review.text}"`).join('\n');
+            
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = `cloudai_pro_reviews_${new Date().toISOString().split('T')[0]}.csv`;
+            
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+            
+            showNotification('CSV exported successfully! Import it into your emotion analysis tool.');
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

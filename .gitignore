@@ -1,0 +1,112 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Model files (large binary files) - DO NOT UPLOAD TO GITHUB
+# Download separately from provided links
+models/**/*.h5
+models/**/*.pkl
+models/**/*.joblib
+models/**/*.pth
+models/**/*.pt
+models/**/*.onnx
+models/**/*.bin
+models/**/*.safetensors
+models/**/*.keras
+models/**/*.pickle
+models/**/*.pb
+models/**/variables/
+
+# Keep model configuration files (small text/json files only)
+!models/**/config.json
+!models/**/tokenizer_config.json
+!models/**/special_tokens_map.json
+!models/**/tokenizer.json
+!models/**/vocab.txt
+!models/**/metadata.json
+
+# GloVe embeddings (download separately)
+embeddings/*.txt
+embeddings/*.vec
+
+# Large datasets (keep small test files)
+data/go_emotions_dataset.csv
+
+# Results and logs
+*.log
+logs/
+*.out
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Backup files
+*.bak
+*.backup

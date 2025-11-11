@@ -1,0 +1,196 @@
+{
+  "timestamp": "2025-08-31T22:00:52.369353",
+  "dataset_info": {
+    "total_samples": 203147,
+    "train_samples": 142202,
+    "val_samples": 30472,
+    "test_samples": 30473,
+    "num_emotions": 28,
+    "emotion_columns": [
+      "admiration",
+      "amusement",
+      "anger",
+      "annoyance",
+      "approval",
+      "caring",
+      "confusion",
+      "curiosity",
+      "desire",
+      "disappointment",
+      "disapproval",
+      "disgust",
+      "embarrassment",
+      "excitement",
+      "fear",
+      "gratitude",
+      "grief",
+      "joy",
+      "love",
+      "nervousness",
+      "optimism",
+      "pride",
+      "realization",
+      "relief",
+      "remorse",
+      "sadness",
+      "surprise",
+      "neutral"
+    ]
+  },
+  "preprocessing_config": {
+    "min_text_length": 2,
+    "max_text_length": 512,
+    "remove_stopwords": true,
+    "use_lemmatization": true,
+    "use_stemming": false
+  },
+  "feature_config": {
+    "tfidf_params": {
+      "max_features": 10000,
+      "ngram_range": [
+        1,
+        3
+      ],
+      "min_df": 2,
+      "max_df": 0.95,
+      "use_idf": true,
+      "smooth_idf": true,
+      "sublinear_tf": true,
+      "norm": "l2"
+    },
+    "char_params": {
+      "analyzer": "char",
+      "ngram_range": [
+        3,
+        5
+      ],
+      "max_features": 2000,
+      "min_df": 2
+    },
+    "use_linguistic_features": true,
+    "total_features": 17056
+  },
+  "best_model": {
+    "name": "Multinomial NB",
+    "metrics": {
+      "accuracy": 0.15847335258598058,
+      "hamming_loss": 0.06665486816937329,
+      "jaccard_score": 0.2864645581475786,
+      "f1_micro": 0.3532609313697618,
+      "precision_micro": 0.30298064918851436,
+      "recall_micro": 0.42354994409751573,
+      "f1_macro": 0.3044080695159001,
+      "precision_macro": 0.25490549554574404,
+      "recall_macro": 0.3934987700360022,
+      "f1_weighted": 0.35624708557341445,
+      "precision_weighted": 0.3134929744124981,
+      "recall_weighted": 0.42354994409751573,
+      "f1_samples": 0.33710508993063465,
+      "precision_samples": 0.3086956617993307,
+      "recall_samples": 0.432149889359787,
+      "f1_per_emotion": [
+        0.48820715817252186,
+        0.554138043833824,
+        0.3396343352959405,
+        0.25068005858966314,
+        0.20758928571428573,
+        0.2531458179126573,
+        0.23856439127375087,
+        0.22364217252396165,
+        0.27746319365798416,
+        0.1952414275717285,
+        0.2527929901423877,
+        0.2668488160291439,
+        0.18401486988847585,
+        0.23736968724939855,
+        0.34824281150159747,
+        0.7008985879332478,
+        0.12217194570135746,
+        0.333875691506671,
+        0.5842087427990512,
+        0.1645123384253819,
+        0.3433734939759036,
+        0.10749185667752444,
+        0.1683673469387755,
+        0.13734939759036144,
+        0.42528735632183906,
+        0.3346364347146208,
+        0.34120481927710844,
+        0.4424728752260398
+      ],
+      "f1_mean_per_emotion": 0.3044080695159001,
+      "exact_match_ratio": 0.15847335258598058,
+      "avg_precision": 0.30298064918851436,
+      "training_time": 0.739356
+    },
+    "training_time": 0.739356
+  },
+  "all_models_performance": {
+    "Logistic Regression": {
+      "f1_macro": 0.272889620251643,
+      "f1_micro": 0.30923489010098126,
+      "hamming_loss": 0.12483005475752916,
+      "training_time": 39.878212
+    },
+    "Linear SVM": {
+      "f1_macro": 0.2706982977345153,
+      "f1_micro": 0.3066852349811643,
+      "hamming_loss": 0.12661858193001538,
+      "training_time": 83.71146
+    },
+    "Multinomial NB": {
+      "f1_macro": 0.3044080695159001,
+      "f1_micro": 0.3532609313697618,
+      "hamming_loss": 0.06665486816937329,
+      "training_time": 0.739356
+    },
+    "Complement NB": {
+      "f1_macro": 0.25608196694954877,
+      "f1_micro": 0.3118177711062856,
+      "hamming_loss": 0.11068943854780032,
+      "training_time": 0.707492
+    },
+    "SGD Classifier": {
+      "f1_macro": 0.2573603119257052,
+      "f1_micro": 0.2916180317369105,
+      "hamming_loss": 0.13870227468776958,
+      "training_time": 14.072619
+    },
+    "Random Forest": {
+      "f1_macro": 0.2174310748687446,
+      "f1_micro": 0.21978338829720134,
+      "hamming_loss": 0.050743305329482805,
+      "training_time": 365.913729
+    }
+  },
+  "optimal_thresholds": {
+    "admiration": 0.6000000000000002,
+    "amusement": 0.6000000000000002,
+    "anger": 0.6000000000000002,
+    "annoyance": 0.3500000000000001,
+    "approval": 0.15000000000000002,
+    "caring": 0.6500000000000001,
+    "confusion": 0.8000000000000002,
+    "curiosity": 0.30000000000000004,
+    "desire": 0.8500000000000002,
+    "disappointment": 0.30000000000000004,
+    "disapproval": 0.40000000000000013,
+    "disgust": 0.5500000000000002,
+    "embarrassment": 0.8500000000000002,
+    "excitement": 0.8000000000000002,
+    "fear": 0.7500000000000002,
+    "gratitude": 0.8500000000000002,
+    "grief": 0.7500000000000002,
+    "joy": 0.8000000000000002,
+    "love": 0.7000000000000002,
+    "nervousness": 0.6000000000000002,
+    "optimism": 0.8500000000000002,
+    "pride": 0.8500000000000002,
+    "realization": 0.5500000000000002,
+    "relief": 0.8500000000000002,
+    "remorse": 0.7500000000000002,
+    "sadness": 0.7500000000000002,
+    "surprise": 0.7000000000000002,
+    "neutral": 0.25000000000000006
+  }
+}
